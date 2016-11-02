@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inline Block vs. Block Float Demo/Issues</title>
+	<style> type="text/css"
+	/* universal selector for all tags on page */
+		*{
+			margin:0;
+			padding:0 auto;
+
+		}
+
+		.clear-fix:after {
+        display: block;
+        clear: both;
+        /* ensure some older compatability */
+        height: 0;
+        font-size: 0;
+        content: " ";
+        /* extra backup */
+        visibility: hidden;
+        /*300-4 = 296 */
+        width: 296px;
+        height: 296px;
+        /* add a margin*/
+        
+    }	
+
+
+	</style>
+</head>
+<body>
+
+</body>
+</html>

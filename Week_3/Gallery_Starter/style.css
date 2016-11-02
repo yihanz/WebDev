@@ -1,0 +1,26 @@
+@import 'https://fonts.googleapis.com/css?family=Lobster+Two';
+
+body{
+	font-family: 'Lobster Two', cursive;
+}
+
+html{
+	background: url(../img/bg.jpg);
+}
+
+div.container{
+	width: 900px;
+	margin: 0 auto;
+}
+
+div.polaroid{
+	width: 240px;
+	display: inline-block;
+	margin: 20px;
+}
+
+.polaroid img{
+	width: 100%
+	height: auto;
+	border: 10px solid #
+}

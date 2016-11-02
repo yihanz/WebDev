@@ -1,0 +1,10 @@
+/* this is where we define our styles */
+div{
+	min-height: 200px;
+	background-color:rgba(0,100,255,0.22);
+}
+
+div.wrapper{
+	width: 900px;
+	margin: 0 auto
+}
