@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>F to C/K Converter</title>
+
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- had to switch to an older jquery and bootstrap to make collapse work-->
+    <script type="text/javascript">
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        var btn = document.getElementById("convertBtn");
+        btn.addEventListener("click", calcTemp);
+    });
+
+    function calcTemp(){
+        var result = document.getElementById("tempOutput");
+        var f = document.getElementById("fahrenheit").value;
+        console.log(typeof(f));
+        f = parseFloat(f); 
+        console.log(typeof(f));
+        var arrUnit = document.getElementsByName("unit");
+        var p;
+
+        for(var i = 0; i < arrUnit.length; i++){
+            //check to see if a radio button is checked 
+            if(arrUnit[i].checked){
+                //alert("found one!");
+                p = arrUnit[i].value;
+                console.log(typeof(p));
+        		p = parseFloat(p); 
+        		console.log(typeof(p));
+                break;
+            }
+        }
+
+        var unit = (f-32)*5/9+p;
+        unit = tempRound(unit);
+
+        var total = unit;
+
+        var p1 = document.createElement('P');
+        var p2 = document.createElement('P');
+        var p3 = document.createElement('P');
+        var t1 = document.createTextNode("Fahrenheit: " + f);
+        var t2 = document.createTextNode("Result: " + unit);
+        var t3 = document.createTextNode("🌡 "+"🌡 "+"🌡 ");
+
+        p1.appendChild(t1);
+        p2.appendChild(t2);
+        p3.appendChild(t3);
+        result.appendChild(p1);
+        result.appendChild(p2);
+        result.appendChild(p3);
+
+        function tempRound(num) {
+        var roundNum = Math.ceil(num)-1;
+        return roundNum;
+    	}
+
+    }
+
+    </script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 130px">
+        <div class=".col-md-6 .col-md-offset-3">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="fahrenheit" class="col-sm-5 control-label">°F (degrees Fahrenheit):</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" name="fahrenheit" id="fahrenheit">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-4">
+                        <label class="radio-inline">
+                            <input type="radio" name="unit" value="0"> to Celcius
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="unit" value="273.15"> to Kelvins
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-10">
+                        <button type="submit" class="btn btn-default" id="convertBtn">Convert Temprature</button>
+                     	<button href="#slideOut" class="btn btn-default" data-toggle="collapse">Show Result</button>
+                     	<!-- haven't figure out how to shut collapse off after the first time. this is a temporary solution so that the well won't be shown and hidden when you hit the convert button. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id=slideOut class="collapse">
+        <div id="tempOutput" class="well" ></div>
+        </div>
+    </div>
+</body>
+
+</html>
