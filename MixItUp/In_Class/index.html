@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mix It Up</title>
+    <!-- Load jQuery First -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Now load MixItUp (wont work if we dont load JQ first) -->
+    <script type="text/javascript" src="jquery.mixitup.min.js"></script>
+    <!-- Custom Scripts -->
+    <script type="text/javascript">
+    // This is the shorthand version of jQuery's document ready function
+    $(function() {
+        $("#reset").click(function(event){
+            $("#Container").mixItUp('filter','');
+        });
+        // Instantiate MixItUpHere
+        $("#Container").mixItUp();
+    });
+    </script>
+    <style type="text/css">
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+        }
+        body{
+            font-family: 'Helvetica Neue', arial, sans-serif;
+        }
+
+        /* Controls */
+        .controls{
+            padding: 2%;
+            background: #111;
+            color: white;
+        }
+
+        label{
+            font-weight: 300;
+            margin: 0 20px 0 0;
+        }
+
+        button{
+            display: inline-block;
+            padding: 5px 10px;
+            background: #666;
+            border: 0;
+            color: #eee;
+            font-size: 16px;
+            font-weight: 100;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:focus{
+            outline: 0 none;
+        }
+
+        button.active, button:hover{
+            transition: all 0.3s ease-in-out;
+            background: #999;
+
+        }
+
+        /* Mix Styles */
+        .container{
+            padding: 2%;
+            text-align: justify;
+            font-size: 0.1px;
+            background: #DDD;
+            min-height: 200px;
+
+        }
+        /* This is needed for spacing between mix elements */
+        .container:after{
+            content: '';
+            display: inline-block;
+            width: 100%;
+
+        }
+        /* Mobile First Styling this will apply unless a screen of a certain min width is detected */
+        .container .mix,
+        .container .gap{
+            display: inline-block;
+            width: 100%;
+        }
+
+        .container .mix{
+            text-align: left;
+            background: #AAA;
+            margin-bottom: 2%;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .mix{
+            text-shadow: 1px 1px 6px grey;
+            box-shadow: 2px 2px 10px grey;
+        }
+
+        .container .mix:after{
+            /* display data attribuets or classes using css */
+            content: attr(class);
+            color: white;
+            font-size: 16px;
+            display: inline-block;
+            vertical-align: top;
+            padding: 4% 6%;
+            font-weight: 300;
+        }
+
+        /* this is optional bur lets use another psuedo class selector to add more padding */
+
+        .container .mix:before{
+            content: '';
+            display: inline-block;
+            padding-top: 60%;
+        }
+
+        /* Larger Phones and Tablets {2 items per row} */
+            @media all and (min-width: 768px) {
+            .container .mix, .container .gap{
+                width: 48%;
+            }
+        
+
+        /* Desktop (4 items per row) */
+            @media all and (min-width: 1024px) {
+            .container .mix, .container .gap{
+                width: 24%;
+            }
+        }        
+    </style>
+</head>
+
+<body>
+    <!-- Build our buttons and controls here -->
+    <div class="controls">
+        <!-- Filter -->
+        <label>Filter</label>
+        <button class="filter" data-filter=".dogs">Dogs</button>
+        <button class="filter" data-filter=".cats">Cats</button>
+        <button class="filter" data-filter=".goats">Goats</button>
+        <button class="filter" data-filter="all">All</button>
+        <button id="reset">None</button>
+        <!-- Sort -->
+        <label>Sort</label>
+        <button class="sort" data-sort="default">Default</button>
+        <button class="sort" data-sort="myorder:asc">Ascending</button>
+        <button class="sort" data-sort="myorder:desc">Descending</button>
+        <button class="sort" data-sort="random">Random</button>
+    </div>
+    <!-- This container holds all elements we wish to filter or sort -->
+    <div id="Container" class="container">
+        <!-- content to filter and sort -->
+        <div class="mix dogs cats" data-myorder="1"></div>
+        <div class="mix cats" data-myorder="2"></div>
+        <div class="mix dogs goats" data-myorder="3"></div>
+        <div class="mix goats" data-myorder="4"></div>
+        <div class="mix cats goats" data-myorder="5"></div>
+        <div class="mix cats" data-myorder="6"></div>
+        <div class="gap"></div>
+        <div class="gap"></div>
+
+    </div>
+</body>
+
+</html>
