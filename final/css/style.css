@@ -1,0 +1,246 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+	margin:0;
+	padding:0;
+	font-size: 100%;
+	box-sizing: border-box;
+}
+:root{
+	--leftInitial: -50vw;
+	--rightInitial: 100vw;
+	--blur: 0px;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Avenir Next', Helvetica, sans-serif;
+	font-size: 1.1em;
+	font-weight: 200;
+	color:#53565A;
+	
+}
+img {
+	width: 100%;
+	height: auto;
+}
+h1 { font-size:24px; font-weight:700; text-transform:uppercase; }
+h2 { font-size:21px; font-weight:700; }
+.inner { position:relative; max-width:1480px; margin:0 auto; padding:0 30px; }
+#page_feature {
+	width:100%; height:100%; min-height:100%;
+	position:relative; background:url(../images/banner.jpg) center center no-repeat; background-size:cover;
+}
+#page_feature, #page_feature h1, #page_feature h2, #page_feature a { color:#fff; }
+#page_feature h2 { font-weight:300; }
+#header_content { text-align:center; font-family: 'Lato', 'Avenir Next', Helvetica, sans-serif; letter-spacing: .01em; font-weight: 400;}
+#nav-one { padding:0; margin:0 auto; list-style:none; display:inline-block; }
+#nav-one li { display:inline-block; position:relative; }
+#nav-one li .navbg { 
+	position:absolute; z-index:10; top:0; left:0; width:100%; height:100%; margin:0; padding:0; 
+	filter: alpha(opacity=0); 
+	opacity: 0;
+	-webkit-transition: opacity .5s ease-out;
+	transition: opacity .5s ease-out; 
+	background:url(../assets/images/Nav-Bar-Hover.png) center top no-repeat; 
+	background-size:100% 100%;
+}
+#nav-one li:hover .navbg { 
+	filter: alpha(opacity=100); 
+	opacity:1;
+}
+#nav-one li a, #nav-one li a:link { 
+	color:#fff; 
+	padding:30px 40px 80px; 
+	margin:0; font-size:15px; 
+	line-height:20px; 
+	text-decoration:none; 
+	display:inline-block; 
+	position:relative; 
+	z-index:11; }
+#logo { vertical-align:top; width: 122px;}
+#page_feature .middle_content { margin-top:7%; text-align:center; }
+#page_feature .middle_content h2 { margin-bottom:50px; }
+
+.h {
+	font-style: italic;
+	font-weight: bold;
+}
+.h--topHeading {
+	font-size: 5rem;
+	color: white;
+	line-height: 1.2;
+	margin-top: 20vh;
+}
+.h--subHeading {
+	font-size: 2rem;
+}
+.para {
+	line-height: 2;
+	padding-top: 10px;
+}
+.heading--split2 {
+	font-weight: 400;
+	position: absolute;
+	left: 100vw;
+	transition: left .4s ease-out;
+}
+.heading--split1.visible {
+	left: 25vw;
+}
+.heading--split1 {
+	font-weight: 200;
+	position: absolute;
+	left: var(--leftInitial);
+	transition: left .4s ease-out;
+}
+.heading--split2.visible {
+	left: 45vw;
+}
+.heading--thin{
+	font-weight: 200;
+}
+.header__video { 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100vh;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+.video--sub {
+	width: 100%;	
+	
+}
+.container {
+	height: 100vh;
+	position: relative;
+	margin-bottom: -1em;
+	overflow: hidden;
+}
+.container__home {
+	max-height: 100vh;
+}
+.container__one {
+	background: white;
+}
+.container__two {
+	height: 150vh;
+	background: white;
+}
+
+.container__four {
+	background: url("../assets/images/volvoHero.jpg") no-repeat;
+	background-position: center;
+	background-size: cover;
+	z-index: 5;
+	/*filter: blur(var(--blur));*/
+}
+.container__four::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: inherit;
+	filter: blur(var(--blur));
+	transition: all .5s ease;
+}
+.card {
+	width: 45vw;
+	background: white;
+	padding: 4em 2em;
+	margin: 1em;
+}
+.card__image {
+	width: 25vw;
+	display: inline-block;
+	position: absolute;
+	left: var(--leftInitial);
+	top: 10vh;
+	padding: 0;
+	transition: left .5s ease-out;
+}
+.card__image.visible {
+	left: calc(5em + 2vw);
+}
+.card--half {
+	width: 50vw;
+	height: 768px;
+	margin: 0;
+	position: absolute;
+	padding: 4em 6em 1em;
+	top: 0;
+	left: var(--rightInitial);
+	transition: all 1s ease-out;
+}
+.card--half.visible {
+	left: 50vw;
+}
+.card--half.fullLeft {
+	left: 0;
+}
+.card--half.slideUp {
+	margin-top: -100%;
+}
+.card--fadeIn {
+	box-shadow: 0px 0px 49px rgba(32, 32, 32, .5);
+	position: absolute;
+	top: 10vh;
+	left: 45vw;
+	height: 70vh;
+	opacity: 0;
+	transition: opacity .5s ease-in;
+}
+.card--fadeIn.visible {
+	opacity: 1;
+}
+.card__section--hidden {
+	display: none;
+}
+.card__section--hidden .h {
+	text-align: right;
+}
+.container--imageBlock {
+	width: 50%;
+	position: absolute;
+	transition: top 1s ease-out;
+	top: 100vh; 
+	left: 25vw;
+}
+.container--imageBlock__visible {
+	top: 40vh;
+}
+.container--imageBlock__visible.anim{
+	animation-name: shake;
+	animation-duration: .75s;
+	animation-iteration-count: 5;
+	animation-timing-function: ease-in-out;
+}
+.img--slideUpAnim__sub {
+	width: 25%;
+	margin-left: 75%;
+}
+#stick {
+	width: 100%;
+}
+.fix {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	transform: translateZ(0);
+}
+@keyframes shake {
+  from {
+    transform: translate(0, 0px) rotateY(-10deg);
+  }
+  65% {
+    transform: translate(0, 15px) rotateY(10deg) rotateX(10deg);
+   }
+  to {
+   transform: translate(0, 0px) rotateY(-10deg);
+  }
+}
